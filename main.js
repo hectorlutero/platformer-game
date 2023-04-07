@@ -14,12 +14,13 @@ class Player {
         this.velocity = {
             x: 0, y: 1
         }
+        this.width = 100
         this.height = 100
     }
 
     draw() {
         c.fillStyle = "red"
-        c.fillRect(this.position.x, this.position.y, 100, this.height)
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
     }
 
     update() {
@@ -80,6 +81,15 @@ function animate() {
     player.velocity.x = 0
     if (keys.d.pressed) player.velocity.x = 4
     else if (keys.a.pressed) player.velocity.x = -4
+
+    if (
+        player.position.y + player.height <= platform.position.y &&
+        player.position.y + player.height + player.velocity.y >= platform.position.y &&
+        player.position.x + player.width >= platform.position.x &&
+        player.position.x <= platform.position.x + platform.width
+    ) {
+        player.velocity.y = 0
+    }
 }
 
 animate()
