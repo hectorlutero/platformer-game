@@ -52,3 +52,20 @@ function animate() {
 }
 
 animate()
+
+window.addEventListener('keydown', event => {
+    switch (event.key) {
+        case 'w':
+            console.log('move up');
+            break
+        case 's':
+            console.log('move down');
+            break
+        case 'a':
+            console.log('move left');
+            break
+        case 'd':
+            console.log('move right');
+            break
+    }
+})
