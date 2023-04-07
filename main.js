@@ -34,12 +34,27 @@ class Player {
 }
 
 
+class Platform {
+    constructor(position) {
+        this.position = {
+            x: position.x,
+            y: position.y
+        }
+        this.width = 200
+        this.height = 20
+    }
 
+    draw() {
+        c.fillStyle = "blue"
+        c.fillRect(this.position.x, this.position.y, this.width, this.height)
+    }
+}
 
 const player = new Player({
     x: 0,
     y: 0
 })
+const platform = new Platform({ x: 30, y: 100 })
 const player2 = new Player({
     x: 300,
     y: 100
@@ -61,6 +76,7 @@ function animate() {
     c.fillRect(0, 0, canvas.width, canvas.height)
     player.update()
     player2.update()
+    platform.draw()
     player.velocity.x = 0
     if (keys.d.pressed) player.velocity.x = 4
     else if (keys.a.pressed) player.velocity.x = -4
